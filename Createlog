@@ -1,0 +1,58 @@
+//Step1: Specify The Config File In Application Assambely Add the Following Line
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+//Step:2 //Create File As named above log4net.config see below
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="log4net"
+           type="log4net.Config.Log4NetConfigurationSectionHandler,
+         log4net" />
+  </configSections>
+
+  <log4net>
+    <appender name="LogFileAppender"
+                    type="log4net.Appender.RollingFileAppender" >
+      <param name="File" value="E:\log.txt" />
+      <param name="AppendToFile" value="true" />
+      <rollingStyle value="Size" />
+      <maxSizeRollBackups value="2" />
+      <maximumFileSize value="10MB" />
+      <staticLogFileName value="true" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <layout type="log4net.Layout.PatternLayout">
+        <param name="ConversionPattern"
+             value="%-5p%d{yyyy-MM-dd hh:mm:ss} – %m%n" />
+        <conversionPattern
+             value="%newline%newline%date %newline%logger 
+                       [%property{NDC}] %newline>> %message%newline" />
+      </layout>
+    </appender>
+
+    <root>
+      <level value="ALL" />
+      <appender-ref ref="LogFileAppender" />
+    </root>
+  </log4net>
+</configuration>
+
+
+and C# code will looks like 
+private static readonly ILog log = LogManager.GetLogger(typeof(className));
+ 
+           // var file = log4net.GlobalContext.Properties["LogFileName"] = @"E\TestLog1.txt";
+
+            BasicConfigurator.Configure();
+            //XmlConfigurator.Configure(new System.IO.FileInfo(args[0]));
+            log.Info("Entering application.");
+            //bar.DoIt();
+            log.Info("Exiting application.");
+
+            //log.IsDebugEnabled = true;
+            //log.IsErrorEnabled = true;
+            if (log.IsErrorEnabled)
+            {
+                log.Error("Page Load failed : " + "test1");
+            } if (log.IsDebugEnabled)
+            {
+                log.Debug("Application loaded successfully.");
+            }
