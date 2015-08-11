@@ -1,0 +1,236 @@
+  class Class1
+    {
+        private static Form _defaultInstance_CustomerDetails;
+        private static Form _defaultInstance_Item_Master;
+        private static Form _defaultInstance__Stone;
+        private static Form _defaultInstance__Labour_Transaction;
+        private static Form _defaultInstance_Account_labour;
+        private static Form _defaultInstance_Stock;
+        private static Form _defaultInstance_Sales_Core_info;
+        private static Form _defaultInstance_All_Products;
+        private static Form _defaultInstance_DesBoard;
+        private static Form _defaultInstance_month_calc;
+        private static Form _defaultInstance_Party;
+        private static Form _defaultInstance_Borrower;
+        private static Form _defaultInstance_Daily_Voucher;
+        private static Form _defaultInstance_Account;
+        private static Form _defaultInstance_DesBoard_Purchase;
+        private static Form _defaultInstance_month_calc11;
+        private static Form _defauleInstance_Opening_Stock;
+
+
+        public Form DefaultInstance_CustomerDetails
+        {
+
+            get
+            {
+                if (_defaultInstance_CustomerDetails == null || _defaultInstance_CustomerDetails.IsDisposed)
+                {
+                    _defaultInstance_CustomerDetails = new CustomerDetails();
+
+                }
+                return _defaultInstance_CustomerDetails;
+            }
+        }
+        public Form DefaultInstance_Opening_Stock {
+            get {
+                if (_defauleInstance_Opening_Stock == null || _defauleInstance_Opening_Stock.IsDisposed) {
+                    _defauleInstance_Opening_Stock = new Opening_Stock();
+                }
+                return _defauleInstance_Opening_Stock;
+            }
+        }
+        public Form DefaultInstance_Item_Master
+        {
+
+            get
+            {
+                if (_defaultInstance_Item_Master == null || _defaultInstance_Item_Master.IsDisposed)
+                {
+                    _defaultInstance_Item_Master = new Item_Master();
+
+                }
+                return _defaultInstance_Item_Master;
+            }
+        }
+        public Form DefaultInstance_Stone
+        {
+
+            get
+            {
+                if (_defaultInstance__Stone == null || _defaultInstance__Stone.IsDisposed)
+                {
+                    _defaultInstance__Stone = new Stone();
+
+                }
+                return _defaultInstance__Stone;
+            }
+        }
+        public Form DefaultInstance_Labour_Transaction
+        {
+
+            get
+            {
+                if (_defaultInstance__Labour_Transaction == null || _defaultInstance__Labour_Transaction.IsDisposed)
+                {
+                    _defaultInstance__Labour_Transaction = new Labour_Transaction();
+
+                }
+                return _defaultInstance__Labour_Transaction;
+            }
+        }
+        public Form DefaultInstance_Account_labour
+        {
+
+            get
+            {
+                if (_defaultInstance_Account_labour == null || _defaultInstance_Account_labour.IsDisposed)
+                {
+                    _defaultInstance_Account_labour = new Account_labour();
+
+                }
+                return _defaultInstance_Account_labour;
+            }
+        }
+        public Form DefaultInstance_Stock
+        {
+
+            get
+            {
+                if (_defaultInstance_Stock == null || _defaultInstance_Stock.IsDisposed)
+                {
+                    _defaultInstance_Stock = new Stock();
+
+                }
+                return _defaultInstance_Stock;
+            }
+        }
+        public Form DefaultInstance_Sales_Core_info
+        {
+
+            get
+            {
+                if (_defaultInstance_Sales_Core_info == null || _defaultInstance_Sales_Core_info.IsDisposed)
+                {
+                    _defaultInstance_Sales_Core_info = new Sales_Core_info();
+
+                }
+                return _defaultInstance_Sales_Core_info;
+            }
+        }
+        public Form DefaultInstance_All_Products
+        {
+
+            get
+            {
+                if (_defaultInstance_All_Products == null || _defaultInstance_All_Products.IsDisposed)
+                {
+                    _defaultInstance_All_Products = new All_Products();
+
+                }
+                return _defaultInstance_All_Products;
+            }
+        }
+        public Form DefaultInstance_DesBoard
+        {
+
+            get
+            {
+                if (_defaultInstance_DesBoard == null || _defaultInstance_DesBoard.IsDisposed)
+                {
+                    _defaultInstance_DesBoard = new DesBoard();
+
+                }
+                return _defaultInstance_DesBoard;
+            }
+        }
+        public Form DefaultInstance_month_calc
+        {
+
+            get
+            {
+                if (_defaultInstance_month_calc == null || _defaultInstance_month_calc.IsDisposed)
+                {
+                    _defaultInstance_month_calc = new month_calc();
+
+                }
+                return _defaultInstance_month_calc;
+            }
+        }
+        public Form DefaultInstance_Party
+        {
+
+            get
+            {
+                if (_defaultInstance_Party == null || _defaultInstance_Party.IsDisposed)
+                {
+                    _defaultInstance_Party = new Party();
+
+                }
+                return _defaultInstance_Party;
+            }
+        }
+        public Form DefaultInstance_Borrower
+        {
+
+            get
+            {
+                if (_defaultInstance_Borrower == null || _defaultInstance_Borrower.IsDisposed)
+                {
+                    _defaultInstance_Borrower = new Borrower();
+
+                }
+                return _defaultInstance_Borrower;
+            }
+        }
+        public Form DefaultInstance_Daily_Voucher
+        {
+
+            get
+            {
+                if (_defaultInstance_Daily_Voucher == null || _defaultInstance_Daily_Voucher.IsDisposed)
+                {
+                    _defaultInstance_Daily_Voucher = new Daily_Voucher();
+
+                }
+                return _defaultInstance_Daily_Voucher;
+            }
+        }
+        public Form DefaultInstance_Account
+        {
+
+            get
+            {
+                if (_defaultInstance_Account == null || _defaultInstance_Account.IsDisposed)
+                {
+                    //_defaultInstance_Account = new Booking();
+
+                }
+                return _defaultInstance_Account;
+            }
+        }
+        public Form DefaultInstance_DesBoard_Purchase
+        {
+            get
+            {
+                if (_defaultInstance_DesBoard_Purchase == null || _defaultInstance_DesBoard_Purchase.IsDisposed)
+                {
+                    _defaultInstance_DesBoard_Purchase = new DesBoard_Purchase();
+
+                }
+                return _defaultInstance_DesBoard_Purchase;
+            }
+        }
+        public Form DefaultInstance_month_calc11
+        {
+            get
+            {
+                if (_defaultInstance_month_calc11 == null || _defaultInstance_month_calc11.IsDisposed)
+                {
+                    _defaultInstance_month_calc11 = new month_calc11();
+
+                }
+                return _defaultInstance_month_calc11;
+            }
+        }
+    }
