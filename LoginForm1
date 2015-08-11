@@ -1,0 +1,143 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Data.OleDb;
+using System.Threading;
+using System.Windows.Forms;
+using System.Net.NetworkInformation;
+using System.Data.Sql;
+
+namespace silver
+{
+
+    public partial class Form1 : Form
+    {
+        //private static string aa = AccessData.a;
+        private static OleDbConnection con = new OleDbConnection(AccessData.connection);
+        public static String SQL = null;
+        private static int count = 0;
+        private Thread workspace_thread = null;
+        private Thread PASS_RECOVER_thread = null;
+        public Form1()
+        {
+            InitializeComponent();
+            //chk();
+        }
+
+        private void chk()
+        {
+            //var enumerator = SqlDataSourceEnumerator.Instance;
+            //foreach (DataRow row in enumerator.GetDataSources().Rows)
+           // {
+                //var serverName = row["ServerName"];
+                //var instance = row["InstanceName"];
+                //if (serverName.ToString() == "JYOTI") { MessageBox.Show("Host : "+serverName+"   ::: Instance : "+instance); AccessData.connection = "Data Source=EXTREMEWEB\\" + instance + ";Initial catalog=silver;Integrated Security=true;"; }
+
+                // build a connection string and try to connect to it
+           // }
+
+        }
+
+
+        [STAThread]
+        private void NewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            NewAccount na = new NewAccount();
+            na.ShowDialog();
+        }
+
+        [STAThread]
+        private void button1_Click(object sender, EventArgs e)
+        {
+            count += 1;
+            if (count <= 3)
+            {
+                if (con.State == ConnectionState.Closed) { try { con.Open(); } catch { try { con = new OleDbConnection(AccessData.connection); } catch { MessageBox.Show("Error Occured While Connecting To DataBase Server Please Connect to your Administrator", "NetWork Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error); } } }
+
+                if (textBox1.Text != "" && textBox2.Text != "")
+                {
+                    OleDbDataAdapter Dap = new OleDbDataAdapter("select OrgName From BasicInfo where User_ID='" + textBox1.Text + "' and Password='" + textBox2.Text + "'", con);
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        Dap.Fill(dt);
+                    }
+                    catch (OleDbException exx) { }
+                    if (dt.Rows.Count == 1)
+                    {
+                        AccessData.ORGName = dt.Rows[0][0].ToString();
+                    }
+                    if (AccessData.ORGName != null)
+                    {
+                        OleDbCommand cmd_core = new OleDbCommand("insert into Core_login(Login_name,loginTime,LoginFailed) values('" + textBox1.Text + "',getDate(),0)", con);
+                        try
+                        {
+
+
+                            cmd_core.ExecuteNonQuery();
+                        }
+                        catch { }
+                        this.workspace_thread = new Thread(new ThreadStart(Stare_workspace));
+                        workspace_thread.SetApartmentState(ApartmentState.STA);
+                        this.workspace_thread.Start();
+                        this.Close();
+
+                    }
+                    else { MessageBox.Show("Sorry UserName/Password Is Incorrect please Try Again Or Connect to your Administrator", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                }
+                else
+                {
+                    MessageBox.Show("Login Name Or Password Is Wrong....", "Invalid Informatiion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    OleDbCommand cmd_core = new OleDbCommand("insert into Core_login(Login_name,loginTime,LoginFailed) values('" + textBox1.Text + "',getDate(),1)", con);
+                    try
+                    {
+                        cmd_core.ExecuteNonQuery();
+                      
+                    }
+                    catch { }
+
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("you tried Three(3) times With Wrong Password So Would You like to Reset Your Password", "Error Occured!! Read Instruction Carefully!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    count = 0;
+                }
+                else
+                {
+                    this.PASS_RECOVER_thread = new Thread(new ThreadStart(PASS_RECOVER_threadClass));
+                    PASS_RECOVER_thread.SetApartmentState(ApartmentState.STA);
+                    this.PASS_RECOVER_thread.Start();
+                    count = 0;
+                    this.Close();
+                }
+            }
+            con.Close();
+            con.Dispose();
+        }
+
+        [STAThread]
+        void Stare_workspace()
+        {
+            
+            Application.Run(new Workspace());
+        }
+
+        [STAThread]
+        void PASS_RECOVER_threadClass()
+        {
+            Application.Run(new PasswordReset());
+        }
+
+        [STAThread]
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
