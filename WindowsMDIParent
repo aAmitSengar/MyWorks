@@ -1,0 +1,404 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.OleDb;
+using System.Reflection;
+using System.IO;
+using System.Threading;
+
+namespace silver
+{
+    public partial class Workspace : Form
+    {
+        private static OleDbConnection con = new OleDbConnection(AccessData.connection);
+        public static String SQL = null;
+        int tempHeight = 0;
+        int tempWidth = 0;
+        public Workspace()
+        {
+            InitializeComponent();
+            Screen Srn = Screen.PrimaryScreen;
+            tempHeight = Srn.Bounds.Width;
+            tempWidth = Srn.Bounds.Height;
+        }
+        [STAThread]
+        private void Workspace_Load(object sender, EventArgs e)
+        {
+            this.Width = tempWidth;
+            this.Height = tempHeight;
+        }
+
+
+        [STAThread]
+        private void itemDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            //Item_Master d = new Item_Master();
+            d.DefaultInstance_Item_Master.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_Item_Master.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_Item_Master);
+            d.DefaultInstance_Item_Master.TopMost = true;
+            d.DefaultInstance_Item_Master.BringToFront();
+            d.DefaultInstance_Item_Master.Show();
+            if (d.DefaultInstance_Item_Master.WindowState == FormWindowState.Minimized) { d.DefaultInstance_Item_Master.WindowState = FormWindowState.Maximized; }
+
+            //Item_Master im = new Item_Master();
+            //im.Size = this.Size;
+            //im.ShowDialog();
+        }
+
+        [STAThread]
+        private void transactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            d.DefaultInstance_Labour_Transaction.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_Labour_Transaction.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_Labour_Transaction);
+            d.DefaultInstance_Labour_Transaction.TopMost = true;
+            d.DefaultInstance_Labour_Transaction.BringToFront();
+            d.DefaultInstance_Labour_Transaction.Show();
+            if (d.DefaultInstance_Labour_Transaction.WindowState == FormWindowState.Minimized) { d.DefaultInstance_Labour_Transaction.WindowState = FormWindowState.Maximized; }
+
+            //lt.Size = this.Size;
+            //lt.ShowDialog();
+        }
+        [STAThread]
+        private void ledgerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            d.DefaultInstance_Account_labour.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_Account_labour.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_Account_labour);
+            d.DefaultInstance_Account_labour.TopMost = true;
+            d.DefaultInstance_Account_labour.BringToFront();
+            d.DefaultInstance_Account_labour.Show();
+            if (d.DefaultInstance_Account_labour.WindowState == FormWindowState.Minimized) { d.DefaultInstance_Account_labour.WindowState = FormWindowState.Maximized; }
+
+            //AL.Size = this.Size;
+            //AL.ShowDialog();
+        }
+        [STAThread]
+        private void metalStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {  //{ Require_Password rp = new Require_Password();
+        //if (rp.ShowDialog() == DialogResult.OK)
+        //{
+            Class1 d = new Class1();
+            d.DefaultInstance_Stock.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_Stock.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_Stock);
+            d.DefaultInstance_Stock.TopMost = true;
+            d.DefaultInstance_Stock.BringToFront();
+            d.DefaultInstance_Stock.Show();
+            if (d.DefaultInstance_Stock.WindowState == FormWindowState.Minimized) { d.DefaultInstance_Stock.WindowState = FormWindowState.Maximized; }
+
+      //  }
+            //    st.Size = this.Size;
+            //    st.ShowDialog();
+        }
+
+        [STAThread]
+        private void newBillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            d.DefaultInstance_DesBoard.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_DesBoard.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_DesBoard);
+            d.DefaultInstance_DesBoard.TopMost = true;
+            d.DefaultInstance_DesBoard.BringToFront();
+            d.DefaultInstance_DesBoard.Show();
+            if (d.DefaultInstance_DesBoard.WindowState == FormWindowState.Minimized) { d.DefaultInstance_DesBoard.WindowState = FormWindowState.Maximized; }
+
+            //db.Size = this.Size;
+            //db.ShowDialog();
+        }
+        [STAThread]
+        private void finishMetalStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            d.DefaultInstance_Sales_Core_info.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_Sales_Core_info.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_Sales_Core_info);
+            d.DefaultInstance_Sales_Core_info.TopMost = true;
+            d.DefaultInstance_Sales_Core_info.BringToFront();
+            d.DefaultInstance_Sales_Core_info.Show();
+            if (d.DefaultInstance_Sales_Core_info.WindowState == FormWindowState.Minimized) { d.DefaultInstance_Sales_Core_info.WindowState = FormWindowState.Maximized; }
+
+            //sci.Size = this.Size;
+            //sci.ShowDialog();
+        }
+        [STAThread]
+        private void registerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            d.DefaultInstance_month_calc.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_month_calc.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_month_calc);
+            d.DefaultInstance_month_calc.TopMost = true;
+            d.DefaultInstance_month_calc.BringToFront();
+            d.DefaultInstance_month_calc.Show();
+            if (d.DefaultInstance_month_calc.WindowState == FormWindowState.Minimized) { d.DefaultInstance_month_calc.WindowState = FormWindowState.Maximized; }
+
+            //mc.Size = this.Size;
+            //mc.ShowDialog();
+        }
+
+        [STAThread]
+        private void detailedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Patthor d = new Patthor();
+            d.TopLevel = false;
+            //d.ControlBox = false;
+            d.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d);
+            d.TopMost = true;
+            d.BringToFront();
+            d.Show();
+            if (d.WindowState == FormWindowState.Minimized) { d.WindowState = FormWindowState.Maximized; }
+            //st.Size = this.Size;
+            //st.ShowDialog();
+        }
+
+        [STAThread]
+        private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+
+
+            //CustomerDetails d = new CustomerDetails();
+            d.DefaultInstance_CustomerDetails.TopLevel = false;
+            ////d.ControlBox = false;
+            d.DefaultInstance_CustomerDetails.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_CustomerDetails);
+            d.DefaultInstance_CustomerDetails.TopMost = true;
+            d.DefaultInstance_CustomerDetails.BringToFront();
+            //d.Show();
+            d.DefaultInstance_CustomerDetails.Show();
+            if (d.DefaultInstance_CustomerDetails.WindowState == FormWindowState.Minimized) { d.DefaultInstance_CustomerDetails.WindowState = FormWindowState.Maximized; }
+        }
+        [STAThread]
+        private void stoneMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 d = new Class1();
+            d.DefaultInstance_Stone.TopLevel = false;
+            //d.ControlBox = false;
+            d.DefaultInstance_Stone.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(d.DefaultInstance_Stone);
+            d.DefaultInstance_Stone.TopMost = true;
+            d.DefaultInstance_Stone.BringToFront();
+            d.DefaultInstance_Stone.Show();
+            if (d.DefaultInstance_Stone.WindowState == FormWindowState.Minimized) { d.DefaultInstance_Stone.WindowState = FormWindowState.Maximized; }
+
+            //st.Size = this.Size;
+            //st.ShowDialog();
+        }
+        [STAThread]
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Class1 p = new Class1();
+            p.DefaultInstance_Party.TopLevel = false;
+            p.DefaultInstance_Party.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(p.DefaultInstance_Party);
+            p.DefaultInstance_Party.TopMost = true;
+            p.DefaultInstance_Party.BringToFront();
+            p.DefaultInstance_Party.Show();
+            if (p.DefaultInstance_Party.WindowState == FormWindowState.Minimized) { p.DefaultInstance_Party.WindowState = FormWindowState.Maximized; }
+
+        }
+        [STAThread]
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Class1 b = new Class1();
+            b.DefaultInstance_Borrower.TopLevel = false;
+            b.DefaultInstance_Borrower.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(b.DefaultInstance_Borrower);
+            b.DefaultInstance_Borrower.TopMost = true;
+            b.DefaultInstance_Borrower.BringToFront();
+            b.DefaultInstance_Borrower.Show();
+            if (b.DefaultInstance_Borrower.WindowState == FormWindowState.Minimized) { b.DefaultInstance_Borrower.WindowState = FormWindowState.Maximized; }
+
+        }
+        [STAThread]
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Class1 dv = new Class1();
+         
+            dv.DefaultInstance_Daily_Voucher.TopLevel = false;
+            dv.DefaultInstance_Daily_Voucher.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(dv.DefaultInstance_Daily_Voucher);
+            dv.DefaultInstance_Daily_Voucher.TopMost = true;
+            dv.DefaultInstance_Daily_Voucher.BringToFront();    
+            dv.DefaultInstance_Daily_Voucher.Show();
+            if (dv.DefaultInstance_Daily_Voucher.WindowState == FormWindowState.Minimized) { dv.DefaultInstance_Daily_Voucher.WindowState = FormWindowState.Maximized; }
+
+        }
+        [STAThread]
+        private void allProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 dv = new Class1();
+            dv.DefaultInstance_All_Products.TopLevel = false;
+            dv.DefaultInstance_All_Products.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(dv.DefaultInstance_All_Products);
+            dv.DefaultInstance_All_Products.TopMost = true;
+            dv.DefaultInstance_All_Products.BringToFront();    
+            dv.DefaultInstance_All_Products.Show();
+            if (dv.DefaultInstance_All_Products.WindowState == FormWindowState.Minimized) { dv.DefaultInstance_All_Products.WindowState = FormWindowState.Maximized; }
+
+        }
+        [STAThread]
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            
+        }
+        [STAThread]
+        private void newPurchaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Require_Password rp = new Require_Password();
+            //if (rp.ShowDialog() == DialogResult.OK)
+            //{
+                Class1 dv = new Class1();
+                dv.DefaultInstance_DesBoard_Purchase.TopLevel = false;
+                dv.DefaultInstance_DesBoard_Purchase.Dock = DockStyle.Fill;
+                toolStripContainer1.ContentPanel.Controls.Add(dv.DefaultInstance_DesBoard_Purchase);
+                dv.DefaultInstance_DesBoard_Purchase.TopMost = true;
+                dv.DefaultInstance_DesBoard_Purchase.BringToFront();    
+                dv.DefaultInstance_DesBoard_Purchase.Show();
+                if (dv.DefaultInstance_DesBoard_Purchase.WindowState == FormWindowState.Minimized) { dv.DefaultInstance_DesBoard_Purchase.WindowState = FormWindowState.Maximized; }
+
+            //}
+        }
+        [STAThread]
+        private void registerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Require_Password rp = new Require_Password();
+            //if (rp.ShowDialog() == DialogResult.OK)
+            //{
+                Class1 dv = new Class1();
+                dv.DefaultInstance_month_calc11.TopLevel = false;
+                dv.DefaultInstance_month_calc11.Dock = DockStyle.Fill;
+                toolStripContainer1.ContentPanel.Controls.Add(dv.DefaultInstance_month_calc11);
+                dv.DefaultInstance_month_calc11.TopMost = true;
+                dv.DefaultInstance_month_calc11.BringToFront();  
+                dv.DefaultInstance_month_calc11.Show();
+                if (dv.DefaultInstance_month_calc11.WindowState == FormWindowState.Minimized) { dv.DefaultInstance_month_calc11.WindowState = FormWindowState.Maximized; }
+
+           // }
+        }
+        [STAThread]
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SaveFD1 = new SaveFileDialog();
+            try
+            {
+                string FileName = "";
+                SaveFD1.InitialDirectory = "C:";
+                SaveFD1.FileName = "sale" + "_" + DateTime.Now.Date.ToString("dd-MMM-yyy");
+                SaveFD1.Title = "Backup ";
+                SaveFD1.DefaultExt = "accdb";
+                SaveFD1.Filter = "Ms-Access Files (*.accdb)|*.mdb|All Files|*.*";
+                //SaveFD1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                SaveFD1.FilterIndex = 1;
+                SaveFD1.RestoreDirectory = true;
+                if (SaveFD1.ShowDialog() == DialogResult.OK)
+                {
+                    FileName = SaveFD1.FileName; Backup(FileName);
+                    Backup(FileName);
+                    MessageBox.Show("Backup Process is Completed Successfully !", "Backup Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error while backup", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+
+            }
+
+        }
+        // End of Backup
+        [STAThread]
+        protected void Backup(string path)
+        {
+            string src = System.IO.Directory.GetParent(Application.StartupPath)+"\\Data\\sale.accdb";
+            string dst = path;
+            System.IO.File.Copy(src, dst, true);
+
+        }
+        [STAThread]
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            string src = System.IO.Directory.GetParent(Application.StartupPath) + "\\Data\\sale.accdb";
+             OpenFileDialog SaveFD1 = new OpenFileDialog();
+             try
+             {
+                 string FileName = "";
+                 SaveFD1.InitialDirectory = "C:";
+                 SaveFD1.FileName = "sale" + "_" + DateTime.Now.Date.ToString("dd-MMM-yyy");
+                 SaveFD1.Title = "Backup ";
+                 SaveFD1.DefaultExt = "accdb";
+                 SaveFD1.Filter = "Ms-Access Files (*.accdb)|*.mdb|All Files|*.*";
+                 //SaveFD1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                 SaveFD1.FilterIndex = 1;
+                 SaveFD1.RestoreDirectory = true;
+                 if (SaveFD1.ShowDialog() == DialogResult.OK)
+                 {
+                     FileName = SaveFD1.FileName;
+                     con.Close();
+                     con.Dispose();
+                     //System.IO.File.Delete(src);
+                     System.IO.File.Copy(FileName,src, true);
+                     MessageBox.Show("Back Completed successful", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 }
+             }
+             catch { MessageBox.Show("Error while backup", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        [STAThread]
+        private void openingStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 dv = new Class1();
+            dv.DefaultInstance_Opening_Stock.TopLevel = false;
+            dv.DefaultInstance_Opening_Stock.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(dv.DefaultInstance_Opening_Stock);
+            dv.DefaultInstance_Opening_Stock.TopMost = true;
+            dv.DefaultInstance_Opening_Stock.BringToFront();  
+            dv.DefaultInstance_Opening_Stock.Show();
+            if (dv.DefaultInstance_Opening_Stock.WindowState == FormWindowState.Minimized) { dv.DefaultInstance_Opening_Stock.WindowState = FormWindowState.Maximized; }
+
+        }
+        [STAThread]
+        private void bookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class1 dv = new Class1();
+            dv.DefaultInstance_Account.TopLevel = false;
+            dv.DefaultInstance_Account.Dock = DockStyle.Fill;
+            toolStripContainer1.ContentPanel.Controls.Add(dv.DefaultInstance_Account);
+            dv.DefaultInstance_Account.TopMost = true;
+            dv.DefaultInstance_Account.BringToFront();
+            dv.DefaultInstance_Account.Show();
+            if (dv.DefaultInstance_Account.WindowState == FormWindowState.Minimized) { dv.DefaultInstance_Account.WindowState = FormWindowState.Maximized; }
+
+        }
+        [STAThread]
+        private void registerToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+    }
+
+
+}
+
