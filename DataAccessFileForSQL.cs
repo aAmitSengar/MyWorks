@@ -12,7 +12,7 @@ namespace TestPaperEngine.Database
     {
 
         // private static string Path = System.IO.Directory.GetParent(Application.StartupPath).ToString(); 
-        public static readonly string connection = "Data Source=trusoft;Initial Catalog=TestPaperEngine;Integrated Security=true;";
+        public static readonly string connection = "Data Source=amitpc/sqlexpress;Initial Catalog=database;Integrated Security=true;";
 
     }
     public static class cc2
