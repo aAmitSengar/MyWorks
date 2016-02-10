@@ -125,3 +125,30 @@
             return deletes.Union(transposes).Union(replaces).Union(inserts).ToList();
         }
     }
+//Use of Above file is :
+Spelling spelling = new Spelling();
+            string word = "";
+
+            word = "speling";
+            Response.Write(string.Format("{0} => {1}", word, spelling.Correct(word)));
+
+            word = "korrecter"; // 'correcter' is not in the dictionary file so this doesn't work
+            Response.Write(string.Format("</br>{0} => {1}", word, spelling.Correct(word)));
+
+            word = "korrect";
+            Response.Write(string.Format("</br>{0} => {1}", word, spelling.Correct(word)));
+
+            word = "acess";
+            Response.Write(string.Format("</br>{0} => {1}", word, spelling.Correct(word)));
+
+            word = "supposidly";
+            Response.Write(string.Format("</br>{0} => {1}", word, spelling.Correct(word)));
+
+            // A sentence
+            string sentence = "</br>I havve speled thes woord wwrong"; // sees speed instead of spelled (see notes on norvig.com)
+            string correction = "";
+            foreach (string item in sentence.Split(' '))
+            {
+                correction += " " + spelling.Correct(item);
+            }
+            Response.Write(string.Format("</br>Did you mean:" + correction));
